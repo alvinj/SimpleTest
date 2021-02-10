@@ -64,11 +64,20 @@ object SimpleTest:
             s"(false) $desc"
         )
 
+    // require a description
     def isEq(expected: Any, received: Any, desc: String): Unit =
         if expected == received then
             printGreen(s"(true)  $desc")
         else
             printRed(s"(false) EXPECTED: ($expected), RECEIVED: ($received), DESC: $desc")
+        end if
+
+    // don’t require a description
+    def isEq(expected: Any, received: Any): Unit =
+        if expected == received then
+            printGreen(s"(true) EXPECTED: ($expected), RECEIVED: ($received)")
+        else
+            printRed(s"(false) EXPECTED: ($expected), RECEIVED: ($received)")
         end if
 
     // specify todo’s
