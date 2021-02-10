@@ -67,7 +67,7 @@ object SimpleTest:
     // require a description
     def isEq(expected: Any, received: Any, desc: String): Unit =
         if expected == received then
-            printGreen(s"(true)  $desc")
+            printGreen(s"(true) $desc")
         else
             printRed(s"(false) EXPECTED: ($expected), RECEIVED: ($received), DESC: $desc")
         end if
