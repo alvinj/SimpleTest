@@ -1,4 +1,4 @@
-val scala3Version = "3.0.0-M3"
+val scala3Version = "3.0.0-RC1"
 
 lazy val root = project
    .in(file("."))
@@ -6,8 +6,8 @@ lazy val root = project
       name := "SimpleTest",
       version := "0.2.0",
       scalaVersion := scala3Version,
-      libraryDependencies += "io.monix" %% "minitest" % "2.9.2" % "test",
-      testFrameworks += new TestFramework("minitest.runner.Framework")
+      // libraryDependencies += "io.monix" %% "minitest" % "2.9.2" % "test",
+      // testFrameworks += new TestFramework("minitest.runner.Framework")
   )
 
 scalacOptions ++= Seq(
@@ -22,6 +22,6 @@ scalacOptions ++= Seq(
    "-Ykind-projector",     // allow `*` as wildcard to be compatible with kind projector
    "-Xfatal-warnings",     // fail the compilation if there are any warnings
    "-Xmigration",          // warn about constructs whose behavior may have changed since version
-   "-source:3.1"
+   // "-source:3.1"  // NO LONGER VALID AS OF RC1
 )
 
