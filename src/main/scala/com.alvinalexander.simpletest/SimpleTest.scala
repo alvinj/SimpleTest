@@ -14,7 +14,7 @@ import support._
 
 object SimpleTest:
 
-    private def _isTrue(
+    private def _True(
         blockOfTestCode: => Boolean, 
         trueString: String,
         falseString: String
@@ -25,21 +25,31 @@ object SimpleTest:
             printRed(falseString)
         end if
 
-    def isTrue(blockOfTestCode: => Boolean, num: Int): Unit =
-        _isTrue(
+    /**
+     * Assert that an expression is true.
+     * @param blockOfTestCode The expression to test.
+     * @param num The test number.
+     */
+    def True(blockOfTestCode: => Boolean, num: Int): Unit =
+        _True(
             blockOfTestCode,
             s"(true)  test $num",
             s"(false) test $num"
         )
 
-    def isTrue(blockOfTestCode: => Boolean, desc: String): Unit =
-        _isTrue(
+    /**
+     * Assert that an expression is true.
+     * @param blockOfTestCode The expression to test.
+     * @param desc The test description.
+     */
+    def True(blockOfTestCode: => Boolean, desc: String): Unit =
+        _True(
             blockOfTestCode,
             s"(true)  $desc",
             s"(false) $desc"
         )
 
-    private def _isFalse(
+    private def _False(
         blockOfTestCode: => Boolean, 
         trueString: String,
         falseString: String
@@ -50,58 +60,80 @@ object SimpleTest:
             printRed(falseString)
         end if
 
-    def isFalse(blockOfTestCode: => Boolean, num: Int): Unit =
-        _isFalse(
+    /**
+     * Assert that an expression is false.
+     * @param blockOfTestCode The expression to test.
+     * @param num The test number.
+     */
+    def False(blockOfTestCode: => Boolean, num: Int): Unit =
+        _False(
             blockOfTestCode,
             s"(true)  test $num",
             s"(false) test $num"
         )
 
-    def isFalse(blockOfTestCode: => Boolean, desc: String): Unit =
-        _isFalse(
+    /**
+     * Assert that an expression is false.
+     * @param blockOfTestCode The expression to test.
+     * @param desc The test description.
+     */
+    def False(blockOfTestCode: => Boolean, desc: String): Unit =
+        _False(
             blockOfTestCode,
             s"(true)  $desc",
             s"(false) $desc"
         )
 
-    // require a description
-    def isEq(expected: Any, received: Any, desc: String): Unit =
-        if expected == received then
+    /**
+     * Assert that the two given values are equal (`==`).
+     * @param expected The expected result.
+     * @param actual The actual result.
+     * @param desc A description of the test.
+     */
+    def Equals(expected: Any, actual: Any, desc: String): Unit =
+        if expected == actual then
             printGreen(s"(true) $desc")
         else
-            printRed(s"(false) EXPECTED: ($expected), RECEIVED: ($received), DESC: $desc")
+            printRed(s"(false) EXPECTED: ($expected), ACTUAL: ($actual), DESC: $desc")
         end if
 
-    // don’t require a description
-    def isEq(expected: Any, received: Any): Unit =
-        if expected == received then
-            printGreen(s"(true) EXPECTED: ($expected), RECEIVED: ($received)")
-        else
-            printRed(s"(false) EXPECTED: ($expected), RECEIVED: ($received)")
-        end if
-
-    // specify todo’s
-    def todo(desc: String): Unit =
+    def Todo(desc: String): Unit =
         printYellow(s"TODO:   $desc")
 
 
     /**
-     * Let this object keep track of the test numbers for you.
+     * This is a different approach so you don’t have to supply
+     * a description. Just let this object keep track of the
+     * test numbers for you.
      */
     private var testCount = 0
-    def isTrue(blockOfTestCode: => Boolean): Unit =
+    def True(blockOfTestCode: => Boolean): Unit =
         testCount += 1
         if blockOfTestCode then
             printGreen(s"(true)  test $testCount")
         else
             printRed(s"(false) test $testCount")
         end if
-    def isFalse(blockOfTestCode: => Boolean): Unit =
+    def False(blockOfTestCode: => Boolean): Unit =
         testCount += 1
         if blockOfTestCode == false then
             printGreen(s"(true)  test $testCount")
         else
             printRed(s"(false) test $testCount")
+        end if
+
+    /**
+     * Assert that the two given values are equal (`==`).
+     * @param expected The expected result.
+     * @param actual The actual result.
+     */
+    def Equals(expected: Any, actual: Any): Unit =
+        //TODO decide on what output you want to see here
+        testCount += 1
+        if expected == actual then
+            printGreen(s"(true) EXPECTED: ($expected), ACTUAL: ($actual)")
+        else
+            printRed(s"(false) EXPECTED: ($expected), ACTUAL: ($actual)")
         end if
 
 end SimpleTest

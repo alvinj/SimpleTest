@@ -4,10 +4,8 @@ lazy val root = project
    .in(file("."))
    .settings(
       name := "SimpleTest",
-      version := "0.2.0",
-      scalaVersion := scala3Version,
-      // libraryDependencies += "io.monix" %% "minitest" % "2.9.2" % "test",
-      // testFrameworks += new TestFramework("minitest.runner.Framework")
+      version := "0.3.0",
+      scalaVersion := scala3Version
   )
 
 scalacOptions ++= Seq(
@@ -21,7 +19,6 @@ scalacOptions ++= Seq(
    "-unchecked",           // enable additional warnings where generated code depends on assumptions
    "-Ykind-projector",     // allow `*` as wildcard to be compatible with kind projector
    "-Xfatal-warnings",     // fail the compilation if there are any warnings
-   "-Xmigration",          // warn about constructs whose behavior may have changed since version
-   // "-source:3.1"  // NO LONGER VALID AS OF RC1
+   "-Xmigration"           // warn about constructs whose behavior may have changed since version
 )
 
