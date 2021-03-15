@@ -57,3 +57,9 @@ import com.alvinalexander.simpletest.SimpleTest._
     - Now using `True`, `False`, `Equals`, and `Todo` for the test names
     - I like these names better than the alternatives I tried (`_true`,
       `true_?`, `isTrue`, etc.)
+
+
+## TODO
+
+- refactor the code more
+    - can probably use varargs for the “description” parameters

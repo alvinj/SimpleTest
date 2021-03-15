@@ -1,5 +1,13 @@
 package com.alvinalexander.simpletest
 
+/**
+ * All of the source code in this file is distributed under the
+ * GNU General Public License v3.0. See the LICENSE file in this
+ * project, or https://choosealicense.com/licenses/gpl-3.0 for
+ * more details.
+ * 
+ * Created by Alvin J. Alexander, https://alvinalexander.com
+ */
 package support {
     val AnsiRed   = "\u001B[31m"
     val AnsiGreen = "\u001B[32m"
