@@ -10,9 +10,13 @@
 .vscode
 
 # sbt
-# (may want to keep parts of 'project')
+# (keep project/build.properties, but not other things
+# in that directory)
 bin/
-project/
+project/project/
+project/target/
+project/.bsp/
+project/.bloop/
 target/
 build/
 

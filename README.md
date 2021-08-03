@@ -1,14 +1,21 @@
 # SimpleTest
 
-This is an extremely simple “testing” framework that I’m using with the 
-[Scala Cookbook (2nd Edition)](https://amzn.to/3du1pMR). After trying a 
-few different testing frameworks, I decided that what I really wanted 
-was to have my tests in `@main` methods, so I created this very little 
-library.
+This is an extremely simple “testing” framework that I used while writing
+the [Scala Cookbook (2nd Edition)](https://amzn.to/3du1pMR).
+
+Basically what happened is that I needed a framework to test with,
+and the frameworks that I normally use (like ScalaTest) were being 
+rewritten, so sometimes they were available for a certain version 
+of Dotty, but very often they weren’t.
+
+After trying some other testing frameworks, I decided that what I really
+wanted for the purpose of the book’s examples was to have my tests in my
+`@main` methods, so I created this very little library.
 
 To call this a “framework” is a bit of an inside joke. It’s really just
-about 100 lines of code that give me something more than `assert` and
-less than a full-blown testing framework with other required dependencies.
+about 100 lines of code in one file that give me something more than `assert`,
+and less than a full-blown testing framework with other required dependencies
+(that may or may not have been available in 2020 through early 2021).
 
 
 
@@ -50,6 +57,20 @@ import com.alvinalexander.simpletest.SimpleTest._
 ```
 
 
+## The source code
+
+The actual source code for the test methods (`True`, `False`, etc.)
+is in the
+[src/main/scala/com.alvinalexander.simpletest/SimpleTest.scala](SimpleTest.scala)
+file.
+
+Somewhat ironically, I didn’t take the time to write any tests
+for these. I started to look into integrating this code with sbt so
+it could be called with `sbt run`, but somewhere around this time
+I decided that I would rather just have my tests in my `@main`
+methods.
+
+
 
 ## Versions
 
@@ -63,3 +84,7 @@ import com.alvinalexander.simpletest.SimpleTest._
 
 - refactor the code more
     - can probably use varargs for the “description” parameters
+
+
+
+
